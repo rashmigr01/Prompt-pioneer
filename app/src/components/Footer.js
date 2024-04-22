@@ -37,7 +37,7 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" href="https://sruti-s-ragavan.github.io/web/">
+          <Link color="text.secondary" href="https://sruti-s-ragavan.github.io/">
             Mentor: Sruti Srinivasa Ragavan
           </Link>
           <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>

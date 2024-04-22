@@ -5,16 +5,13 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppAppBar from './components/AppAppBar';
-import Hero from './components/Hero';
-import LogoCollection from './components/LogoCollection';
-import Highlights from './components/Highlights';
-import Pricing from './components/Pricing';
-import Features from './components/Features';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
+import Intent from './components/Intent';
+import Modifiers from './components/Modifiers';
 import Footer from './components/Footer';
+import Descriptions from './components/Descriptions';
+import Main from './components/Main';
 
-export default function App() {
+export default function App({ exportedString2 }) {
   const [mode, setMode] = React.useState('dark');
   const defaultTheme = createTheme({ palette: { mode } });
 
@@ -22,22 +19,30 @@ export default function App() {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const [exportedString, setExportedString] = React.useState('');
+
+  const handleExport = (str) => {
+    setExportedString(str);
+  };
+
+  const [exportedString_2, setExportedString_2] = React.useState(exportedString);
+
+  const handleExport_2 = (str) => {
+    setExportedString_2(str);
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
-      <Hero />
       <Box sx={{ bgcolor: 'background.default' }}>
-        <LogoCollection />
-        <Features />
+        <Main exportedString_2={exportedString_2}/>
         <Divider />
-        <Testimonials />
+        <Modifiers onExport={handleExport} />
         <Divider />
-        <Highlights />
+        <Intent exportedString={exportedString} onExport_2={handleExport_2}/>
         <Divider />
-        <Pricing />
-        <Divider />
-        <FAQ />
+        <Descriptions />
         <Divider />
         <Footer />
       </Box>
